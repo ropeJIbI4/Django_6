@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+{% block content %}
+  <h1>Заказанные товары</h1>
+
+  <h2>Последние 7 дней</h2>
+  <ul>
+    {% for order in orders_7_days %}
+  <li>
+    {{ order.order_date }} - {{ order.client.name }} 
+    {% for product in order.products.all %}
+      - {{ product }} 
+    {% endfor %}
+  </li>
+{% endfor %}
+  </ul>
+
+  <h2>Последние 30 дней</h2>
+  <ul>
+    {% for order in orders_30_days %}
+  <li>
+    {{ order.order_date }} - {{ order.client.name }}
+    {% for product in order.products.all %}
+      - {{ product }} 
+    {% endfor %}
+  </li>
+{% endfor %}
+  </ul>
+
+  <h2>Последние 365 дней</h2>
+  <ul>
+    {% for order in orders_365_days %}
+  <li>
+    {{ order.order_date }} - {{ order.client.name }} 
+    {% for product in order.products.all %}
+      - {{ product }} 
+    {% endfor %}
+  </li>
+{% endfor %}
+{% endblock %}
+</body>
+</html>
